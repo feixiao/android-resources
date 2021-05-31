@@ -50,10 +50,12 @@ class SecondActivity : BaseActivity() {
 //            intent.putExtra("param2", "data2")
 //            context.startActivity(intent)
 
+            // 等价上门的Java代码
             val intent = Intent(context, SecondActivity::class.java).apply {
                 putExtra("param1", "data1")
                 putExtra("param2", "data2")
             }
+
             context.startActivity(intent)
         }
 

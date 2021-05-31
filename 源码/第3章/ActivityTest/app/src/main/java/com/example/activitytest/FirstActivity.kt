@@ -47,16 +47,21 @@ class FirstActivity : BaseActivity() {
     //            val intent = Intent(this, FirstActivity::class.java)
     //            startActivity(intent)
 
+            // 按下按钮打开第二个Activity
             SecondActivity.actionStart(this, "data1", "data2")
         }
     }
 
+
+    // 创建菜单栏
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
+    // 相应菜单栏选择
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        // 处理不同的菜单栏选项
         when (item?.itemId) {
             R.id.add_item -> Toast.makeText(this, "You clicked Add", Toast.LENGTH_SHORT).show()
             R.id.remove_item -> Toast.makeText(this, "You clicked Remove", Toast.LENGTH_SHORT).show()
@@ -64,6 +69,7 @@ class FirstActivity : BaseActivity() {
         return true
     }
 
+    //  https://www.cnblogs.com/yycc/p/11549643.html
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             1 -> if (resultCode == RESULT_OK) {
