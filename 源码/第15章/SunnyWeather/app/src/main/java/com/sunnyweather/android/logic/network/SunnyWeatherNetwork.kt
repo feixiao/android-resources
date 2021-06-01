@@ -7,10 +7,13 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+// 定义一个统一的网络数据源访问入口，对所有网络请求的API进行封装。
 object SunnyWeatherNetwork {
 
     private val weatherService = ServiceCreator.create(WeatherService::class.java)
 
+    // suspend, 函数的创建者对函数的调用者的提醒
+    // “我”是一个耗时的函数，我被我的创建者用挂起的方式放到了后台运行，所以要在协程里调用“我”。
     suspend fun getDailyWeather(lng: String, lat: String) = weatherService.getDailyWeather(lng, lat).await()
 
     suspend fun getRealtimeWeather(lng: String, lat: String) = weatherService.getRealtimeWeather(lng, lat).await()
